@@ -1,0 +1,36 @@
+{
+  "project_id": "P005",
+  "github_repository_id": 1415155066,
+  "title_en": "Sheep Moon Light Show",
+  "title_zh": "雲羊逐月 × 三羊共福",
+  "category": "lantern",
+  "topics": [
+    "light-show",
+    "3d",
+    "camera-control"
+  ],
+  "repository_full_name": "jackeytw886/2026sheep",
+  "repository_url": "https://github.com/jackeytw886/2026sheep",
+  "default_branch": "main",
+  "visibility": "public",
+  "aliases": [],
+  "suggested_name": "lantern-sheep-moon",
+  "repository_status": "connected",
+  "content_state": "source-present",
+  "lifecycle": "unknown",
+  "pages_enabled": true,
+  "deployment_url": "https://jackeytw886.github.io/2026sheep",
+  "event_year": null,
+  "entry_paths": [
+    "index.html"
+  ],
+  "related_project_ids": [
+    "P006"
+  ],
+  "handoff_path": "HANDOFF.md",
+  "verification_source": "github-tree-and-readme",
+  "verified_at": "2026-10-17T20:41:56+08:00",
+  "source_baseline_sha": "a9b7d7b8dfd61ca736a48f2007048d2af4387ff0",
+  "last_runtime_verified_sha": null,
+  "naming_status": "preserved-for-pages"
+}
