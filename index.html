@@ -120,6 +120,68 @@ button{cursor:pointer}
   .bar{left:12px;right:12px;width:auto;max-width:none;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;border-radius:12px;scrollbar-width:none}
 }
 @media (prefers-reduced-motion: reduce){.tg i::after{transition:none}.toast{transition:none}}
+/* ===== 奔跑逐月：攝影機原地跑步互動 ===== */
+.ib.run{border-color:rgba(232,165,75,.55);color:#ffe2b8}
+.ib.run[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ink-on-amber)}
+.runp{position:absolute;right:16px;top:12px;width:min(330px,calc(100% - 32px));max-height:calc(100% - 84px);overflow:auto;background:var(--panel2);border:1px solid rgba(232,165,75,.5);border-radius:10px;padding:10px 12px 12px;z-index:6;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);scrollbar-width:thin}
+.runp .hd{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.runp h2{flex:1;margin:0;font-family:var(--f-disp);font-size:1.25em;letter-spacing:.06em;color:#ffe2b8}
+.runp .x{border:1px solid var(--line2);background:transparent;border-radius:5px;font-size:.78em;padding:.05em .55em;color:var(--fg2);white-space:nowrap}
+.runp .opt{display:flex;align-items:center;gap:6px 8px;margin:6px 0;font-size:.86em;color:var(--fg2);flex-wrap:wrap}
+.runp .opt .lab{letter-spacing:.06em}
+.runp .seg button[aria-pressed="true"]{background:var(--amber);color:var(--ink-on-amber)}
+.camv{position:relative;width:100%;aspect-ratio:4/3;background:#000;border-radius:7px;overflow:hidden;margin-top:6px}
+.camv video,.camv canvas{position:absolute;inset:0;width:100%;height:100%}
+.camv video{object-fit:fill;transform:scaleX(-1)}
+.camv .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--fg3);font-size:.85em;text-align:center;padding:10px;pointer-events:none}
+.runst{font-size:.84em;color:#c9f1e6;margin:6px 0 2px;min-height:2.9em;line-height:1.45}
+.runst.warn{color:#ffb4a6}
+.runst.go{color:#ffe2b8;font-weight:700}
+.runbtns{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.runbtns button{flex:1;min-width:7em;height:34px;border-radius:7px;border:1px solid var(--line2);background:transparent;font-size:.9em;white-space:nowrap}
+.runbtns button:hover{background:rgba(255,255,255,.07)}
+.runbtns .go{background:var(--zhu);border-color:var(--zhu);color:var(--ink-on-zhu);font-weight:700}
+.runbtns .go:hover{background:#ec6a54}
+.runp .hint{font-size:.76em;color:var(--fg3);margin:8px 0 0;line-height:1.6}
+.runp kbd{font-family:var(--f-mono);font-size:.92em;border:1px solid var(--line2);border-radius:3px;padding:0 4px;color:var(--fg2)}
+.runhud{position:absolute;left:16px;top:12px;width:min(380px,calc(100% - 380px));min-width:250px;display:flex;flex-direction:column;gap:6px;z-index:5}
+.lane{background:var(--panel);border:1px solid var(--line2);border-left:4px solid var(--pc);border-radius:8px;padding:6px 10px 7px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.lane .top2{display:flex;align-items:baseline;gap:8px;font-size:.84em;min-width:0}
+.lane .nm{font-family:var(--f-disp);font-weight:700;color:var(--pc);font-size:1.12em;letter-spacing:.04em;white-space:nowrap}
+.lane .sh{color:var(--fg2);white-space:nowrap}
+.lane .cad{margin-left:auto;font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--fg2);white-space:nowrap}
+.lane .trk{position:relative;height:14px;margin:6px 14px 0 4px;border-radius:7px;background:var(--track)}
+.lane .trk i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:7px;background:var(--pc);opacity:.85}
+.lane .trk b{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);font-size:18px;line-height:1;font-weight:400}
+.lane .trk em{position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-style:normal;font-size:16px;line-height:1}
+.lane .ps{font-size:.74em;color:var(--fg3);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lane.win{box-shadow:0 0 0 2px var(--pc),0 0 18px var(--pc)}
+.runcount{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);font-family:var(--f-disp);font-weight:700;font-size:min(20vw,150px);line-height:1;color:#ffe2b8;text-shadow:0 0 30px rgba(232,165,75,.85);pointer-events:none;z-index:7;white-space:nowrap}
+.runres{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 64px);transform:translateX(-50%);width:min(420px,calc(100% - 32px));background:var(--panel2);border:1px solid var(--amber);border-radius:12px;padding:12px 16px 14px;z-index:7;text-align:center}
+.runres h2{margin:0 0 6px;font-family:var(--f-disp);font-size:1.5em;color:#ffe2b8;letter-spacing:.06em}
+.runres p{margin:4px 0 8px;color:var(--fg2)}
+.runres ol{margin:6px 0 10px;padding:0;list-style:none;text-align:left}
+.runres li{display:flex;gap:10px;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--line)}
+.runres li .r{font-family:var(--f-disp);font-weight:700;color:var(--amber);min-width:2.6em}
+.runres li .v{margin-left:auto;font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--fg2)}
+.app.racing .stat,.app.racing #labels{display:none}
+.app.racing .openc{display:none!important}
+@media (max-width:760px){
+  .runp{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 60px);left:8px;right:8px;width:auto;max-height:46%;padding:8px;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"hd hd" "cam o1" "cam o2" "cam st" "btn btn";column-gap:10px;align-content:start}
+  .runp .hd{grid-area:hd}.runp .o1{grid-area:o1}.runp .o2{grid-area:o2}.runp .runst{grid-area:st}.runp .runbtns{grid-area:btn}
+  .runp .camv{grid-area:cam;margin-top:2px;align-self:start}
+  .runp h2{font-size:1.05em}
+  .runp .opt{font-size:.74em;margin:2px 0}
+  .runst{font-size:.74em;min-height:0}
+  .runbtns button{min-width:0;height:32px;font-size:.84em}
+  .runp .hint{display:none}
+  .runhud{left:8px;right:8px;top:8px;width:auto;min-width:0;gap:4px}
+  .lane{display:flex;align-items:center;gap:8px;padding:4px 8px}
+  .lane .top2{flex:none;font-size:.76em}
+  .lane .sh,.lane .cad{display:none}
+  .lane .trk{flex:1;height:10px;margin:0 14px 0 6px}
+  .lane .ps{flex:none;margin:0;font-size:.7em;min-width:4.6em;text-align:right}
+}
 </style>
 
 <div class="app">
@@ -135,6 +197,7 @@ button{cursor:pointer}
       </div>
       <button type="button" class="ib t3" id="cam" aria-pressed="true" title="運鏡：鏡頭跟著燈光秀段落移動（拖曳畫面就會關閉）"><svg viewBox="0 0 24 24"><path d="M3 8h11v8H3zM14 11l7-4v10l-7-4"/></svg><span>運鏡</span></button>
       <button type="button" class="ib t3" id="snd" aria-pressed="false" title="同步音效：夜風、羊叫、羊鈴、流水、鼓點會跟著跑法出現"><svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>音效</span></button>
+      <button type="button" class="ib t3 run" id="runBtn" aria-pressed="false" title="奔跑逐月：在攝影機前原地跑步，點亮光階梯追到明月（1～3 人）"><svg viewBox="0 0 24 24"><circle cx="15" cy="4.5" r="1.9"/><path d="M7 21.5l3.2-5.6 3 2.4v3.2M5.5 11.5l3.2-2.8h4.1l2.7 3.6 3.2.8M10.2 15.9l1.9-6.6"/></svg><span>奔跑逐月</span></button>
     </div>
     <div class="row row2 t3">
       <span class="lab">視角</span>
@@ -165,6 +228,19 @@ button{cursor:pointer}
     <div class="toast" id="toast" aria-live="polite"></div>
     <aside class="card" id="card" aria-live="off"></aside>
     <button type="button" class="openc" id="openc" hidden>燈光監看</button>
+    <div class="runhud" id="runHud" hidden></div>
+    <div class="runcount" id="runCount" hidden></div>
+    <section class="runp" id="runPanel" hidden aria-label="奔跑逐月">
+      <div class="hd"><h2>🏃 奔跑逐月</h2><button type="button" class="x" id="runClose">關閉</button></div>
+      <div class="opt o1"><span class="lab">人數</span><div class="seg" id="runN"><button type="button" data-n="1" aria-pressed="true">1 人</button><button type="button" data-n="2">2 人</button><button type="button" data-n="3">3 人</button></div></div>
+      <div class="opt o2"><span class="lab">距離</span><div class="seg" id="runLen"><button type="button" data-l="30">短</button><button type="button" data-l="50" aria-pressed="true">中</button><button type="button" data-l="80">長</button></div>
+        <span class="lab">靈敏度</span><div class="seg" id="runSens"><button type="button" data-s="high">高</button><button type="button" data-s="mid" aria-pressed="true">中</button><button type="button" data-s="low">低</button></div></div>
+      <div class="camv"><video id="runVideo" playsinline muted></video><canvas id="runCanvas"></canvas><div class="ph" id="runPh">按「開啟攝影機」後，站到鏡頭前原地跑步</div></div>
+      <div class="runst" id="runStatus">選好人數後開啟攝影機；沒有攝影機也能用鍵盤或點跑道玩</div>
+      <div class="runbtns"><button type="button" id="runCamBtn">📷 開啟攝影機</button><button type="button" class="go" id="runGo">▶ 開始</button></div>
+      <p class="hint">攝影機：每人站一格，原地跑步，膝蓋抬高最準；舉雙手 1 秒也能開始。<br>鍵盤：玩家1 <kbd>A</kbd><kbd>S</kbd>、玩家2 <kbd>K</kbd><kbd>L</kbd>、玩家3 <kbd>←</kbd><kbd>→</kbd> 交替按；手機可直接點跑道。</p>
+    </section>
+    <div class="runres" id="runRes" hidden></div>
     <div class="bar" role="group" aria-label="圖層">
       <button type="button" class="tg" id="g-lantern" aria-pressed="true"><i></i>燈組本體</button>
       <button type="button" class="tg" id="g-rig" aria-pressed="true"><i></i>舞台燈具</button>
@@ -1282,6 +1358,7 @@ function updBBar(dt) {
   });
 }
 function sparkA(ci) {
+  if (RUN.open && RUN.sparkUntil > RT && (RUN.sparkSide === 'all' || ci < 3)) return 1;   // 奔跑逐月：抵達明月時噴冷焰火
   const Y = FR.yun, S = FR.san; let a = 0;
   if (ci < 3) { if (Y.rk < .5 && Y.l >= 76 && Y.l < 79) a = 1; } else { const b = [86, 90, 94][ci - 3]; if (S.rk < .5 && S.l >= b && S.l < b + 2.4) a = 1; }
   if ((t >= 148 && t < 151.5) || (t >= 164 && t < 166.5)) a = 1;
@@ -1532,12 +1609,428 @@ function sync2d(dt) {
   sent2 = { t, play: playing, speed, show: s2.getShow() };
 }
 
+/* ================= 奔跑逐月：攝影機原地跑步互動（1～3 人） =================
+   1 人：玩家就是雲羊，跑越多光階梯一階階往上亮、雲羊由下往上亮起，抵達明月時明月爆亮＋冷焰火。
+   2～3 人：每人一隻三羊共福的羊（左到右：小羊、大羊、小羊），各自亮起並隨步伐跳躍；雲羊逐月的光階梯跟著領先者。
+   先逐到明月的人獲勝，接著播放「圓滿祝福」燈光秀。 */
+const RUN_MP = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21/';
+const RUN_MODEL = 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task';
+const RUN_COL = ['#ff8a65', '#5fd1b5', '#f5c04a'];
+const RUN_SENS = { high: .75, mid: 1, low: 1.3 };           // 步伐判定門檻倍率（越小越靈敏）
+const RUN_KEYS = [['KeyA', 'KeyS'], ['KeyK', 'KeyL'], ['ArrowLeft', 'ArrowRight']];
+const RUN_BASE_T = 12;                                      // 比賽時燈光秀停在「月色初現」尾聲：夜色＋明月微亮
+const SRC_NAME = { knee: '偵測膝蓋', ankle: '偵測腳踝', arm: '偵測擺手（腳沒入鏡）' };
+const RUN = {
+  open: false, n: 1, len: 50, sens: 'mid', state: 'idle', lights: false, holdT: false,
+  players: [], t0: 0, cT0: 0, cLast: -1, finishT: 0, winner: -1, sparkUntil: 0, sparkSide: 'all',
+  stepLitAt: new Array(8).fill(-9), lit: 0, msgUntil: 0, prevT: 0, prevCamAuto: true, cardWas: false,
+  cam: { on: false, ready: false, lm: null, loading: null, stream: null, lastVT: -1, lastDet: 0, poses: [], handsSince: 0 }
+};
+const runEl = id => document.getElementById(id);
+const hexAlpha = (hx, a) => { const c = hexRGB(hx); return `rgba(${c[0]},${c[1]},${c[2]},${a})`; };
+const segSel = (sel, b) => document.querySelectorAll(sel + ' button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+
+function sheepPlan(n) {
+  return n === 1 ? [['yRam', '雲羊']] : n === 2 ? [['sLambL', '小羊（左）'], ['sLambR', '小羊（右）']] : [['sLambL', '小羊（左）'], ['sRam', '大羊'], ['sLambR', '小羊（右）']];
+}
+function mkPlayers() {
+  RUN.players = sheepPlan(RUN.n).map(([sheep, sname], i) => ({ i, sheep, sname, color: RUN_COL[i], steps: 0, prog: 0, act: 0, cad: 0, hist: [], side: 0, sig: 0, lastStep: -9, present: false, src: '', finishAt: 0, hopT: -9, keyLast: -1 }));
+}
+
+let runStText = '', runStCls = '';
+function setRunStatus(text, cls = '', holdMs = 0) {
+  const now = performance.now();
+  if (!holdMs && now < RUN.msgUntil) return;
+  if (holdMs) RUN.msgUntil = now + holdMs;
+  if (text === runStText && cls === runStCls) return;
+  runStText = text; runStCls = cls;
+  const el = runEl('runStatus'); el.textContent = text; el.className = 'runst' + (cls ? ' ' + cls : '');
+}
+function startHint() {
+  return RUN.n === 1 ? '站到鏡頭前原地跑步；按「開始」或舉雙手 1 秒開始' : `${RUN.n} 人各站一格（左到右＝玩家 1～${RUN.n}），按「開始」或任一人舉雙手 1 秒開始`;
+}
+
+/* ---------- 跑道（左上） ---------- */
+function buildHud() {
+  const hud = runEl('runHud');
+  hud.innerHTML = RUN.players.map(p => `<div class="lane" id="lane${p.i}" style="--pc:${p.color}" title="點跑道也能踏一步">
+    <div class="top2"><span class="nm">玩家${p.i + 1}</span><span class="sh">${p.sname}</span><span class="cad" id="cad${p.i}">0.0 步/秒</span></div>
+    <div class="trk"><i id="bar${p.i}"></i><b id="mk${p.i}">🐑</b><em>🌕</em></div>
+    <div class="ps" id="ps${p.i}">等待中</div></div>`).join('');
+  RUN.players.forEach(p => runEl('lane' + p.i).addEventListener('pointerdown', e => { e.preventDefault(); runStep(p.i, 'tap'); }));
+}
+function updHud() {
+  const racing = ['race', 'win', 'finale'].includes(RUN.state);
+  for (const p of RUN.players) {
+    const pct = (p.prog * 100).toFixed(1) + '%';
+    runEl('bar' + p.i).style.width = pct;
+    runEl('mk' + p.i).style.left = pct;
+    const c = (p.cad || 0).toFixed(1) + ' 步/秒', ce = runEl('cad' + p.i); if (ce.textContent !== c) ce.textContent = c;
+    let s;
+    if (racing) s = p.finishAt ? '抵達明月！' + (p.finishAt - RUN.t0).toFixed(1) + ' 秒' : `${p.steps} / ${RUN.len} 步`;
+    else s = RUN.cam.on ? (p.present ? '已入鏡' + (p.src ? '・' + SRC_NAME[p.src] : '') : (RUN.n > 1 ? `未入鏡：請站到第 ${p.i + 1} 格` : '未入鏡：請站到鏡頭前')) : '用鍵盤或點跑道踏步';
+    const el = runEl('ps' + p.i); if (el.textContent !== s) el.textContent = s;
+    runEl('lane' + p.i).classList.toggle('win', RUN.winner === p.i && RUN.state !== 'race');
+  }
+}
+
+/* ---------- 開關與流程 ---------- */
+function runOpen() {
+  if (viewMode !== '3d') setViewMode('3d');
+  RUN.open = true;
+  runEl('runBtn').setAttribute('aria-pressed', 'true');
+  runEl('runPanel').hidden = false; runEl('runHud').hidden = false;
+  document.querySelector('.app').classList.add('racing');
+  RUN.cardWas = !card.hidden;
+  if (!card.hidden) { card.hidden = true; $('openc').hidden = false; }
+  RUN.prevT = t; RUN.prevCamAuto = camAuto;
+  mkPlayers(); buildHud(); runReady();
+  resize();
+}
+function runReady() {
+  Object.assign(RUN, { state: 'ready', lights: true, holdT: true, winner: -1, finishT: 0, sparkUntil: 0, lit: 0 });
+  RUN.stepLitAt.fill(-9);
+  SHOW = null; stationsUI();
+  t = RUN_BASE_T; resetSmooth(); t3dJump = true; setPlay(true);
+  RUN.players.forEach(p => Object.assign(p, { steps: 0, prog: 0, finishAt: 0, hist: [], cad: 0 }));
+  runEl('runRes').hidden = true; runEl('runCount').hidden = true;
+  setView(RUN.n === 1 ? 'yun' : 'front');
+  runEl('runGo').textContent = '▶ 開始';
+  RUN.msgUntil = 0;
+  setRunStatus(RUN.cam.ready ? startHint() : RUN.cam.on ? runStText : '選好人數後開啟攝影機；沒有攝影機也能用鍵盤或點跑道玩');
+  updHud();
+}
+function runClose() {
+  runStopCam();
+  Object.assign(RUN, { open: false, state: 'idle', lights: false, holdT: false });
+  runEl('runBtn').setAttribute('aria-pressed', 'false');
+  ['runPanel', 'runHud', 'runRes', 'runCount'].forEach(id => runEl(id).hidden = true);
+  document.querySelector('.app').classList.remove('racing');
+  if (RUN.cardWas) { card.hidden = false; $('openc').hidden = true; }
+  t = RUN.prevT; resetSmooth(); t3dJump = true; setCam(RUN.prevCamAuto);
+  resize();
+}
+function sndOn() {
+  if (!SND.c) sndInit(); if (!SND.c) return;
+  SND.c.resume && SND.c.resume();
+  if (!SND.on) { SND.on = true; $('snd').setAttribute('aria-pressed', 'true'); sLastT = t; PL.forEach(p => sLastL[p] = FR[p] ? FR[p].l : 0); }
+}
+function cue(fn, o, piece) { if (SND.c && SND.on) playCue(fn, SND.c.currentTime + .02, o || {}, piece || null); }
+
+function runStart() {
+  if (RUN.state === 'count' || RUN.state === 'race') return;
+  if (RUN.state !== 'ready') runReady();
+  sndOn();
+  RUN.state = 'count'; RUN.cT0 = RT; RUN.cLast = -1;
+  runEl('runGo').textContent = '■ 結束';
+  runEl('runCount').hidden = false; runEl('runCount').textContent = '';
+  RUN.msgUntil = 0; setRunStatus('預備…', 'go');
+}
+function runFinish(i) {
+  if (RUN.state !== 'race') return;
+  RUN.winner = i; RUN.finishT = RT;
+  if (i < 0) { runFinale(); return; }
+  RUN.state = 'win'; RUN.sparkUntil = RT + 2.6; RUN.sparkSide = RUN.n === 1 ? 'yun' : 'all';
+  while (RUN.lit < 8) { RUN.stepLitAt[RUN.lit] = RT; RUN.lit++; }
+  const p = RUN.players[i];
+  cue('bell', { f: 659.3, g: .12, x: .62 }, 'yun'); cue('sparkle', { x: .6 }, 'yun'); cue('chime', { x: .5 });
+  if (RUN.n > 1) cue('bleat', { x: [.25, .5, .78][i], f: p.sheep === 'sRam' ? .8 : 1.5 }, 'san');
+  RUN.msgUntil = 0; setRunStatus(`🌕 玩家${i + 1}（${p.sname}）逐到明月！`, 'go');
+  runEl('runCount').hidden = false; runEl('runCount').textContent = '逐月！';
+}
+function runFinale() {
+  RUN.state = 'finale'; RUN.lights = false; RUN.holdT = false;
+  runEl('runCount').hidden = true; runEl('runGo').textContent = '▶ 再跑一次';
+  t = 148; resetSmooth(); t3dJump = true; setPlay(true); setCam(true);   // 接著播「圓滿祝福」
+  showResult();
+}
+function showResult() {
+  let h = '';
+  if (RUN.n === 1) {
+    const p = RUN.players[0];
+    if (p.finishAt) {
+      const sec = p.finishAt - RUN.t0, key = 'sheepRunBest' + RUN.len;
+      let best = NaN; try { best = parseFloat(localStorage.getItem(key)); } catch (e) {}
+      const nb = !(best > 0) || sec < best;
+      if (nb) try { localStorage.setItem(key, sec.toFixed(2)); } catch (e) {}
+      h = `<h2>🌕 逐月成功！</h2><p>${RUN.len} 步用了 <b class="m">${sec.toFixed(1)}</b> 秒${nb ? '・新紀錄！' : `・最佳紀錄 ${best.toFixed(1)} 秒`}</p>`;
+    } else h = `<h2>時間到</h2><p>跑了 ${p.steps} / ${RUN.len} 步，再試一次！</p>`;
+  } else {
+    const rank = RUN.players.slice().sort((a, b) => (a.finishAt && b.finishAt) ? a.finishAt - b.finishAt : a.finishAt ? -1 : b.finishAt ? 1 : b.prog - a.prog);
+    h = `<h2>${RUN.winner >= 0 ? `🏆 玩家${RUN.winner + 1} 先逐到明月` : '時間到'}</h2><ol>` +
+      rank.map((p, k) => `<li><span class="r">第 ${k + 1}</span><span style="color:${p.color}">玩家${p.i + 1}・${p.sname}</span><span class="v">${p.finishAt ? (p.finishAt - RUN.t0).toFixed(1) + ' 秒' : Math.round(p.prog * 100) + '%'}</span></li>`).join('') + '</ol>';
+  }
+  h += '<div class="runbtns"><button type="button" class="go" id="runAgain">↻ 再跑一次</button><button type="button" id="runEnd">回到燈光秀</button></div>';
+  const el = runEl('runRes'); el.innerHTML = h; el.hidden = false;
+  runEl('runAgain').addEventListener('click', runReady);
+  runEl('runEnd').addEventListener('click', runClose);
+}
+
+/* ---------- 步伐 ---------- */
+function runStep(i, src, when) {
+  const p = RUN.players[i]; if (!p) return;
+  const now = RT; p.hist.push(when === undefined ? now : when); p.hopT = now;
+  if (RUN.state !== 'race' || p.finishAt) return;
+  p.steps++; p.prog = Math.min(1, p.steps / RUN.len);
+  // 光階梯：領先者每跨過 1/8 路程就亮一階，每階一個音
+  const lead = Math.max(...RUN.players.map(q => q.prog)), n = Math.min(8, Math.floor(lead * 8 + 1e-6));
+  while (RUN.lit < n) { RUN.stepLitAt[RUN.lit] = now; cue('mallet', { f: PENTA[RUN.lit + 1], x: .55 + RUN.lit * .04 }, 'yun'); RUN.lit++; }
+  if (RUN.n > 1 && p.steps % Math.max(4, Math.round(RUN.len / 6)) === 0) cue('pluck', { f: PENTA[(i * 3 + p.steps) % 9], x: [.2, .5, .8][i] }, 'san');
+  if (p.prog >= 1) { p.finishAt = now; runFinish(i); }
+}
+
+function runTick(dt) {
+  if (!RUN.open) return;
+  const now = RT;
+  if (RUN.state === 'count') {
+    const k = Math.floor(now - RUN.cT0);
+    if (k !== RUN.cLast) {
+      RUN.cLast = k;
+      if (k < 3) { runEl('runCount').textContent = String(3 - k); cue('tinkle', { f: 1046.5, x: .5 }); }
+      else {
+        runEl('runCount').textContent = '跑！'; cue('bell', { f: 784, g: .12, x: .5 }); cue('zap', { pan: 0 });
+        RUN.state = 'race'; RUN.t0 = now; RUN.players.forEach(p => Object.assign(p, { steps: 0, prog: 0 }));
+        RUN.msgUntil = 0; setRunStatus('比賽中！跑越快，光階梯爬越快', 'go');
+      }
+    }
+  }
+  if (RUN.state === 'race' && now - RUN.t0 > .9) runEl('runCount').hidden = true;
+  if (RUN.state === 'race' && now - RUN.t0 > 120) runFinish(-1);     // 兩分鐘沒人抵達就結束
+  if (RUN.state === 'win' && now - RUN.finishT > 2) runEl('runCount').hidden = true;
+  if (RUN.state === 'win' && now - RUN.finishT > 3) runFinale();
+  for (const p of RUN.players) {
+    const ref = p.hist.length ? Math.max(now, p.hist[p.hist.length - 1]) : now;
+    while (p.hist.length && ref - p.hist[0] > 2) p.hist.shift();
+    p.cad = p.hist.length / 2;
+    p.act += (clamp(p.cad / 3.5, 0, 1) - p.act) * Math.min(1, dt * 3);
+  }
+  updHud();
+}
+
+/* ---------- 燈光：疊在燈光秀上 ---------- */
+function runMod() {
+  if (!RUN.open || !RUN.lights) return;
+  const Y = FR.yun, S = FR.san, P = RUN.players, now = RT, win = RUN.state === 'win';
+  if (!Y || !S || !P.length) return;
+  const lead = Math.max(...P.map(p => p.prog)), act = P.reduce((a, p) => a + p.act, 0) / P.length;
+  const wk = win ? sm((now - RUN.finishT) / .8) : 0, n = lead * 8;
+  // 雲羊逐月：光階梯跟著領先者一階階亮起，雲氣光帶隨跑步速度流動，雲羊由下往上亮
+  Y.stair = o => win ? .95 : o < RUN.lit ? .9 : (o < n ? .12 + .6 * (n - o) : .05);
+  Y.stairFlash = o => pulse(now, RUN.stepLitAt[o], 1.2);
+  const yp = win ? 1 : lead;
+  Y.reveal = { yRam: clamp(yp * 1.15, 0, 1) };
+  Y.ram = lerp(.06, .92, sm(yp * 1.2)); Y.horn = lerp(.05, .9, sm((yp - .15) / .6)); Y.curlU = sm((yp - .2) / .6); Y.eye = yp > .55 ? .95 : .05;
+  Y.rib = lerp(.12 + .6 * act, 1, wk); Y.ribV = lerp(.3 + 2.4 * act, 2.6, wk);
+  Y.moon = lerp(.18 + .32 * sm(lead), 1.08, wk); Y.halo = lerp(.12 + .35 * lead, 1, wk); Y.haloFlash = win ? pulse(now, RUN.finishT, 3.2) : 0;
+  Y.star = lerp(.15, .9, wk); Y.pat = lerp(.05, .95, wk); Y.mtn = lerp(Y.mtn, .7, wk); Y.sea = lerp(.2 + .4 * act, .9, wk); Y.seaW = lerp(act, 1, wk);
+  Y.mov = {}; const bob = Math.max(act, wk);
+  if (bob > .03) Y.mov.yRam = { dy: -2.4 * bob * Math.sin(now * TAU * (.7 + 1.1 * act)), rot: -.008 * bob * Math.sin(now * TAU * .5) };
+  if (P.length > 1) {
+    // 三羊共福：每位玩家一隻羊，跑越多亮越多，每踏一步跳一下
+    Object.assign(S, { lambL: .06, lambR: .06, ram: .06, horn: .06, hornU: 0, aura: 0, eyeL: .05, eyeR: .05, mov: {}, reveal: {} });
+    let lambEye = false;
+    for (const p of P) {
+      const isW = win && RUN.winner === p.i, v = isW ? .75 + .3 * (.5 + .5 * Math.sin(now * 14)) : lerp(.08, .95, sm(p.prog * 1.1));
+      const hu = (now - p.hopT) / .38, hop = hu > 0 && hu < 1 ? Math.sin(Math.PI * hu) : 0;
+      if (p.sheep === 'sRam') {
+        S.ram = v; S.horn = v * .95; S.hornU = isW ? 1 : sm((p.prog - .15) / .6);
+        S.reveal.sRam = isW ? 1 : clamp(p.prog * 1.15, 0, 1); S.aura = isW ? .9 : .5 * p.act; S.eyeR = p.prog > .5 || isW ? .95 : .05;
+      } else {
+        const L = p.sheep === 'sLambL';
+        S[L ? 'lambL' : 'lambR'] = v + .25 * hop;
+        if (hop > 0) S.mov[p.sheep] = { dy: -10 * hop, rot: (L ? -1 : 1) * .04 * hop };
+        if (p.prog > .5 || isW) lambEye = true;
+      }
+    }
+    if (lambEye) S.eyeL = .95;
+    S.moon = lerp(.2 + .3 * lead, 1, wk); S.halo = lerp(.1 + .3 * lead, 1, wk); S.haloFlash = win ? pulse(now, RUN.finishT, 3.5) : 0;
+    S.lant = lerp(.35 + .4 * lead, 1, wk); S.sw = lerp(.08 + .5 * act, 1, wk); S.swU = lerp(sm(lead), 1, wk); S.pat = lerp(.05, .95, wk);
+    S.rib = lerp(.15 + .6 * act, 1, wk); S.ribV = lerp(.4 + 2 * act, 2.4, wk);
+  }
+}
+// 地面光帶：跑步越快，光從雲羊往三羊送得越快
+const runFloorSig0 = VER.floorSig;
+VER.floorSig = (i, F, tt) => {
+  if (!(RUN.open && RUN.lights)) return runFloorSig0(i, F, tt);
+  const P = RUN.players, act = P.length ? P.reduce((a, p) => a + p.act, 0) / P.length : 0, k = Math.max(act, RUN.state === 'win' ? 1 : 0);
+  return i === 1 ? [.12 + .83 * k, lerp(.4, 2.6, k)] : [.08 + .62 * k, .4 + 2 * k];
+};
+
+/* ---------- 攝影機與姿勢辨識 ---------- */
+async function runLoadLM() {
+  const vision = await import(RUN_MP + 'vision_bundle.mjs');
+  const fs = await vision.FilesetResolver.forVisionTasks(RUN_MP + 'wasm');
+  const opts = d => ({ baseOptions: { modelAssetPath: RUN_MODEL, delegate: d }, runningMode: 'VIDEO', numPoses: 3, minPoseDetectionConfidence: .5, minPosePresenceConfidence: .5, minTrackingConfidence: .5 });
+  try { return await vision.PoseLandmarker.createFromOptions(fs, opts('GPU')); }
+  catch (e) { console.warn('GPU 模式失敗，改用 CPU', e); return await vision.PoseLandmarker.createFromOptions(fs, opts('CPU')); }
+}
+async function runStartCam() {
+  const C = RUN.cam; sndOn();
+  if (!window.isSecureContext) { setRunStatus('攝影機需要 HTTPS 網址才能使用（GitHub Pages 網址可以）', 'warn', 1e9); return; }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { setRunStatus('這個瀏覽器不支援攝影機，請改用 Chrome 或 Edge', 'warn', 1e9); return; }
+  RUN.msgUntil = 0; setRunStatus('請允許使用攝影機…');
+  try {
+    C.stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 960 }, height: { ideal: 540 } }, audio: false });
+  } catch (err) {
+    const nm = err && err.name;
+    setRunStatus(nm === 'NotAllowedError' ? '攝影機權限被拒絕，請在網址列允許攝影機後再按一次'
+      : nm === 'NotFoundError' ? '找不到攝影機' : nm === 'NotReadableError' ? '攝影機被其他程式佔用中' : '無法開啟攝影機：' + (err && err.message || err), 'warn', 1e9);
+    return;
+  }
+  if (!RUN.open) { runStopTracks(); return; }
+  const v = runEl('runVideo'); v.srcObject = C.stream;
+  await v.play().catch(() => { });
+  if (v.readyState < 1) await new Promise(r => v.addEventListener('loadedmetadata', r, { once: true }));
+  document.querySelector('.camv').style.aspectRatio = (v.videoWidth || 4) + ' / ' + (v.videoHeight || 3);
+  runEl('runPh').hidden = true; C.on = true; runEl('runCamBtn').textContent = '關閉攝影機';
+  updHud();
+  if (!C.lm) {
+    setRunStatus('載入姿勢辨識模型中（第一次約需 10–20 秒）…');
+    try { C.lm = await (C.loading || (C.loading = runLoadLM())); }
+    catch (err) { C.loading = null; console.error(err); setRunStatus('姿勢辨識模型載入失敗，請確認網路後再開一次攝影機', 'warn', 1e9); return; }
+  }
+  if (!C.on) return;
+  C.ready = true; C.lastVT = -1; RUN.msgUntil = 0;
+  setRunStatus(RUN.state === 'race' ? '比賽中！跑越快，光階梯爬越快' : startHint());
+}
+function runStopTracks() { const C = RUN.cam; if (C.stream) C.stream.getTracks().forEach(tk => tk.stop()); C.stream = null; }
+function runStopCam() {
+  const C = RUN.cam; runStopTracks();
+  runEl('runVideo').srcObject = null;
+  Object.assign(C, { on: false, ready: false, poses: [], handsSince: 0 });
+  runEl('runPh').hidden = false; runEl('runCamBtn').textContent = '📷 開啟攝影機';
+  RUN.players.forEach(p => { p.present = false; p.src = ''; });
+  RUN.msgUntil = 0; drawRunCam();
+}
+function runDetect(nowMs) {
+  const C = RUN.cam, v = runEl('runVideo');
+  if (!RUN.open || !C.ready || v.readyState < 2) return;
+  if (nowMs - C.lastDet < 33 || v.currentTime === C.lastVT) return;
+  C.lastDet = nowMs; C.lastVT = v.currentTime;
+  let res = null;
+  try { res = C.lm.detectForVideo(v, nowMs); } catch (e) { console.error(e); return; }
+  runPoses(res && res.landmarks ? res.landmarks : [], nowMs / 1000, (v.videoWidth || 16) / (v.videoHeight || 9));
+}
+// 每一幀的骨架 → 分配到玩家的格子 → 偵測原地跑步的步伐
+function runPoses(list, ts, ar) {
+  const C = RUN.cam, N = RUN.n, P = RUN.players, info = [];
+  for (const lm of list) {
+    const vis = i => !!(lm[i] && (lm[i].visibility === undefined || lm[i].visibility > .5));
+    if (!vis(11) || !vis(12)) continue;
+    const sh = { x: (lm[11].x + lm[12].x) / 2, y: (lm[11].y + lm[12].y) / 2 };
+    let T = Math.hypot((lm[11].x - lm[12].x) * ar, lm[11].y - lm[12].y) * 1.5, cx = sh.x;
+    if (vis(23) && vis(24)) {
+      const hp = { x: (lm[23].x + lm[24].x) / 2, y: (lm[23].y + lm[24].y) / 2 };
+      T = Math.hypot((sh.x - hp.x) * ar, sh.y - hp.y); cx = (sh.x + hp.x) / 2;
+    }
+    if (T < .05) continue;
+    info.push({ lm, vis, T, x: 1 - cx, player: null });
+  }
+  C.poses = info;
+  const slot = new Array(N).fill(null);
+  if (N === 1) { if (info.length) slot[0] = info.reduce((a, b) => b.T > a.T ? b : a); }
+  else for (const q of info) { const c = clamp(Math.floor(q.x * N), 0, N - 1); if (!slot[c] || q.T > slot[c].T) slot[c] = q; }
+  const mul = RUN_SENS[RUN.sens] || 1;
+  let handsUp = false;
+  slot.forEach((q, i) => {
+    const p = P[i]; if (!p) return;
+    p.present = !!q; if (!q) return;
+    q.player = i;
+    const { lm, vis, T } = q; let s = null, th = .1, src = '';
+    if (vis(25) && vis(26)) { s = (lm[26].y - lm[25].y) / T; th = .1; src = 'knee'; }
+    else if (vis(27) && vis(28)) { s = (lm[28].y - lm[27].y) / T; th = .12; src = 'ankle'; }
+    else if (vis(15) && vis(16)) { s = (lm[16].y - lm[15].y) / T; th = .22; src = 'arm'; }
+    if (src !== p.src) { p.side = 0; p.sig = 0; p.src = src; }
+    if (s !== null) {
+      p.sig = p.sig * .4 + s * .6;
+      const k = th * mul, side = p.sig > k ? 1 : p.sig < -k ? -1 : 0;
+      if (side && side !== p.side) {
+        if (p.side !== 0 && ts - p.lastStep > .11) { p.lastStep = ts; runStep(i, 'cam', ts); }
+        p.side = side;
+      }
+    }
+    if (vis(0) && vis(15) && vis(16) && lm[15].y < lm[0].y - .3 * T && lm[16].y < lm[0].y - .3 * T) handsUp = true;
+  });
+  // 舉雙手 1 秒開始
+  if (handsUp && (RUN.state === 'ready' || RUN.state === 'finale')) {
+    if (!C.handsSince) C.handsSince = ts;
+    const left = 1 - (ts - C.handsSince);
+    if (left <= 0) { C.handsSince = 0; if (RUN.state === 'finale') runReady(); runStart(); }
+    else setRunStatus('雙手舉著…再 ' + left.toFixed(1) + ' 秒開始', 'go');
+  } else {
+    C.handsSince = 0;
+    if (RUN.state === 'ready') setRunStatus(info.length ? startHint() : '請站到鏡頭前，讓全身（至少到膝蓋）入鏡');
+  }
+  drawRunCam();
+}
+function drawRunCam() {
+  const cv = runEl('runCanvas'), w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+  const g = cv.getContext('2d'), N = RUN.n;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
+  for (let i = 0; i < N; i++) {
+    const p = RUN.players[i];
+    if (N > 1) { g.fillStyle = hexAlpha(RUN_COL[i], p && p.present ? .17 : .06); g.fillRect(i * w / N, 0, w / N, h); }
+  }
+  g.strokeStyle = 'rgba(255,255,255,.25)'; g.lineWidth = 1;
+  for (let i = 1; i < N; i++) { g.beginPath(); g.moveTo(i * w / N, 0); g.lineTo(i * w / N, h); g.stroke(); }
+  g.font = 'bold ' + Math.max(11, Math.round(w / 22)) + 'px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'top';
+  for (let i = 0; i < N; i++) { g.fillStyle = RUN_COL[i]; g.fillText('玩家' + (i + 1), (i + .5) * w / N, 4); }
+  for (const q of RUN.cam.poses) {
+    const col = q.player != null ? RUN_COL[q.player] : 'rgba(200,200,200,.6)', lm = q.lm, Pp = i => [(1 - lm[i].x) * w, lm[i].y * h];
+    g.strokeStyle = col; g.lineWidth = 3; g.lineCap = 'round';
+    [[11, 12], [11, 13], [13, 15], [12, 14], [14, 16], [11, 23], [12, 24], [23, 24], [23, 25], [25, 27], [24, 26], [26, 28]].forEach(([a, b]) => {
+      if (!q.vis(a) || !q.vis(b)) return; const pa = Pp(a), pb = Pp(b);
+      g.beginPath(); g.moveTo(pa[0], pa[1]); g.lineTo(pb[0], pb[1]); g.stroke();
+    });
+    const pl = q.player != null ? RUN.players[q.player] : null, fresh = pl && RT - pl.hopT < .2;
+    [25, 26].forEach(k => { if (!q.vis(k)) return; const [x, y] = Pp(k); g.fillStyle = fresh ? '#ffffff' : col; g.beginPath(); g.arc(x, y, Math.max(5, w / 45), 0, TAU); g.fill(); });
+  }
+}
+
+/* ---------- 介面事件 ---------- */
+runEl('runBtn').addEventListener('click', () => RUN.open ? runClose() : runOpen());
+runEl('runClose').addEventListener('click', runClose);
+document.querySelectorAll('#runN button').forEach(b => b.addEventListener('click', () => {
+  if (RUN.state === 'count' || RUN.state === 'race' || RUN.state === 'win') return;
+  RUN.n = +b.dataset.n; segSel('#runN', b); mkPlayers(); buildHud(); runReady(); drawRunCam();
+}));
+document.querySelectorAll('#runLen button').forEach(b => b.addEventListener('click', () => {
+  if (RUN.state === 'count' || RUN.state === 'race' || RUN.state === 'win') return;
+  RUN.len = +b.dataset.l; segSel('#runLen', b); updHud();
+}));
+document.querySelectorAll('#runSens button').forEach(b => b.addEventListener('click', () => { RUN.sens = b.dataset.s; segSel('#runSens', b); }));
+runEl('runCamBtn').addEventListener('click', () => (RUN.cam.on || RUN.cam.stream) ? runStopCam() : runStartCam());
+runEl('runGo').addEventListener('click', () => {
+  if (RUN.state === 'race') runFinish(-1);
+  else if (RUN.state === 'count') runReady();
+  else if (RUN.state === 'win') runFinale();
+  else { if (RUN.state === 'finale') runReady(); runStart(); }
+});
+addEventListener('keydown', e => {
+  if (!RUN.open || e.repeat || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+  for (let i = 0; i < RUN.players.length; i++) {
+    const k = RUN_KEYS[i].indexOf(e.code);
+    if (k >= 0) { e.preventDefault(); const p = RUN.players[i]; if (p.keyLast !== k) { p.keyLast = k; runStep(i, 'key'); } return; }
+  }
+  if (e.code === 'Enter' && (RUN.state === 'ready' || RUN.state === 'finale')) { e.preventDefault(); if (RUN.state === 'finale') runReady(); runStart(); }
+});
+// 測試用掛勾（不影響燈光秀）
+if (window.ResizeObserver) new ResizeObserver(() => resize()).observe(runEl('runPanel'));
+window.__run = {
+  state: () => ({ open: RUN.open, state: RUN.state, n: RUN.n, len: RUN.len, lit: RUN.lit, winner: RUN.winner, t: +t.toFixed(2), cam: { on: RUN.cam.on, ready: RUN.cam.ready }, status: runStText,
+    players: RUN.players.map(p => ({ steps: p.steps, prog: +p.prog.toFixed(3), present: p.present, src: p.src, cad: p.cad, finished: !!p.finishAt })) }),
+  sim: (poses, ts) => runPoses(poses, ts, 16 / 9),
+  step: i => runStep(i, 'test')
+};
+
 /* ---------- 版面與主迴圈 ---------- */
 function resize() {
   const w = stageEl.clientWidth, h = stageEl.clientHeight; if (!w || !h) return;
   renderer.setSize(w, h, false); composer.setSize(w, h); css2d.setSize(w, h); bloom.resolution.set(w / 2, h / 2);
-  const wide = w > 760, ch = card.hidden ? 0 : 1;
-  const s = ch ? (wide ? Math.round((card.offsetWidth + 16) / 2) : Math.round((card.offsetHeight + 60) / 2)) : 0;
+  const wide = w > 760, rp = $('runPanel'), box = rp && !rp.hidden ? rp : card.hidden ? null : card;   // 奔跑逐月面板開著時，畫面讓出它的位置
+  const s = box ? (wide ? Math.round((box.offsetWidth + 16) / 2) : Math.round((box.offsetHeight + 60) / 2)) : 0;
   camera.fov = w < 600 ? 55 : 40;
   if (s && wide) { camera.aspect = (w + 2 * s) / h; camera.setViewOffset(w + 2 * s, h, 2 * s, 0, w, h); }
   else if (s) { camera.aspect = w / (h + 2 * s); camera.setViewOffset(w, h + 2 * s, 0, 2 * s, w, h); }
@@ -1550,10 +2043,11 @@ let lastNow = performance.now(), tick = 0;
 function loop(now) {
   const dt = Math.min(.1, (now - lastNow) / 1000); lastNow = now; RT = now / 1000;
   if (viewMode === '2d') { sync2d(dt); requestAnimationFrame(loop); return; }
-  if (playing && !scrubbing) { t += dt * speed; if (t >= LOOP) { t -= LOOP; cycles++; } }
+  if (playing && !scrubbing && !RUN.holdT) { t += dt * speed; if (t >= LOOP) { t -= LOOP; cycles++; } }
   if (viewMode === 'split') sync2d(dt);
+  runDetect(now); runTick(dt);
   for (const k in OUTM) delete OUTM[k];
-  frameAt(t);
+  frameAt(t); runMod();
   updLantern(); updPars(); updMH(dt); updRot(dt); updLaser(); updStrobe(); updFS(dt); updStars(); updSky(); updWash(); updBBar(dt); updSpark(dt); updSmoke(dt); updProj(dt);
   sndUpdate();
   if (camAuto && !tween) camGo();
